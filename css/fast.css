@@ -1,0 +1,33 @@
+/* Fast mode for low-power TVs (chosen automatically under 2.5 GB of memory, or in Halo settings).
+   Same look, but nothing the TV's graphics chip has to recompute every frame:
+   no live blur, no animated shadows, each moving tile on its own layer, shorter moves. */
+.lite{--t1:.12s;--t2:.2s;--t3:.32s}
+.lite *,.lite *::before,.lite *::after{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+.lite #nav .tabs{background:rgba(22,20,19,.86)}
+.lite .prog-hero .btn,.lite .btn{background:rgba(70,68,66,.82)}
+.lite .prog-hero .btn.f,.lite .btn.f{background:#f2f2f4}
+.lite .ccp,.lite .dlg,.lite .toast,.lite #hud{background:#232326}
+.lite .card .im,.lite .card.f .im,.lite .app .tile,.lite .app.f .tile,.lite .qtile.f,.lite .tab.f,.lite #nav .tab.f,.lite #nav .tabs .ib.f,.lite .btn.f{box-shadow:none}
+.lite .row h2,.lite .card .lab,.lite #nav .status,.lite .prog-hero .h-title{text-shadow:none}
+.lite .card,.lite .app,.lite .qtile{will-change:transform}
+.lite .card.f,.lite .app.f{transform:scale(1.07)}
+.lite .card .lab,.lite .card .sub{transition:none}
+.lite .card.f .lab,.lite .card.f .sub{transform:none}
+.lite .bgl{will-change:auto;transition-duration:.6s}
+.lite .track,.lite .scroller,.lite .vin{transition-duration:.3s}
+.lite .hero-in.swap{animation-duration:.3s}
+/* a thin light edge marks the selected tile instead of a big shadow */
+.lite .card.f .im,.lite .app.f .tile{outline:3px solid rgba(255,255,255,.92);outline-offset:0}/* full-screen fades are the most expensive thing for a weak graphics chip: instant or very short */
+.lite #dim{transition:none}
+.lite .view,.lite .view.on{transition-duration:.12s}
+.lite .scrolled .hero{transition-duration:.18s}
+.lite #nav{transition-duration:.2s}
+/* keep every full-screen layer on the graphics chip, so dimming or fading never repaints the whole 1080p screen */
+.lite #dim,.lite .bgl{will-change:opacity}
+.lite #nav{will-change:transform,opacity}
+.lite .hero{will-change:opacity,transform}
+.lite .view,.lite .view.on{transition:none}
+/* the wallpaper carries its own darkening; dimming fades that one picture instead of adding layers */
+.lite #scrim,.lite #dim{display:none}
+.lite .bgl{transition:opacity .45s ease}
+.lite.dimmed .bgl.on{opacity:.3}

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1920,user-scalable=no">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Halo</title>
+<link rel="stylesheet" href="css/os.css">
+<link rel="stylesheet" href="css/launcher.css">
+<link rel="stylesheet" href="css/tvos.css">
+<link rel="stylesheet" href="css/fast.css">
+</head>
+<body>
+<div id="tv">
+  <div id="fx">
+    <div id="bg"><div class="bgl"></div><div class="bgl"></div><div id="scrim"></div><div id="dim"></div></div>
+    <header id="nav"></header>
+    <main id="views">
+      <section class="view" id="v-search"></section>
+      <section class="view on" id="v-home"></section>
+      <section class="view" id="v-discover"></section>
+      <section class="view" id="v-apps"></section>
+      <section class="view" id="v-inputs"></section>
+    </main>
+    <section class="layer" id="settings"></section>
+    <aside class="layer" id="cc"></aside>
+    <div class="layer" id="dialog"></div>
+  </div>
+  <div id="toasts"></div>
+</div>
+<script src="js/halo.js"></script>
+</body>
+</html>

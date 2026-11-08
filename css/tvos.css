@@ -1,0 +1,93 @@
+/* Halo, tvOS look (from the Apple TV reference): full-bleed art, one centred menu capsule,
+   wide-tracked title, a single frosted button, page dots, then the Up Next row of 16:9 cards. */
+:root{
+  --cap:rgba(32,28,26,.48);
+  --cap-edge:rgba(255,255,255,.08);
+  --frost:rgba(255,255,255,.22);
+  --card-r:16px;
+}
+
+/* menu capsule */
+#nav{top:40px;height:72px}
+#nav .brand{display:none}
+#nav .tabs{gap:2px;padding:6px;background:var(--cap);border:1px solid var(--cap-edge);backdrop-filter:blur(36px) saturate(150%);-webkit-backdrop-filter:blur(36px) saturate(150%)}
+#nav .tab{height:56px;padding:0 30px;font-size:26px;font-weight:600;color:rgba(255,255,255,.88);letter-spacing:.005em}
+#nav .tab.icon{padding:0 22px}
+#nav .tab.sel{background:rgba(255,255,255,.18);color:#fff}
+#nav .tab.f,#nav .tab.sel.f{background:#f2f2f4;color:#111;transform:scale(1.06);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+#nav .tabs .ib{width:56px;height:56px;background:none;border:0}
+#nav .tabs .ib .ic{color:rgba(255,255,255,.88)}
+#nav .tabs .ib.f{background:#f2f2f4;transform:scale(1.06);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+#nav .tabs .ib.f .ic{color:#111}
+#nav .status{font-size:24px;gap:16px;color:rgba(255,255,255,.85);text-shadow:0 1px 10px rgba(0,0,0,.4)}
+#nav .status .ic{font-size:26px;color:rgba(255,255,255,.75)}
+
+/* art and scrims: the picture stays bright on the right, the left and bottom darken for text */
+.bgl{inset:0}
+#scrim{background:
+  linear-gradient(90deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.42) 30%,rgba(0,0,0,.08) 58%,rgba(0,0,0,0) 72%),
+  linear-gradient(0deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.55) 22%,rgba(0,0,0,0) 46%),
+  linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 14%)}
+.dimmed #dim{opacity:.78}
+
+/* spotlight */
+.home-hero{height:700px;padding-bottom:150px}
+.hero-in{gap:18px;max-width:860px}
+.prog-hero .h-title{font-size:84px;font-weight:700;letter-spacing:-.02em;line-height:1;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.prog-hero .h-title.logo{font-size:132px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;line-height:.95;margin-right:-.32em;-webkit-line-clamp:1}
+.prog-hero .h-meta{gap:12px;font-size:24px;font-weight:600;color:rgba(255,255,255,.9)}
+.prog-hero .h-meta .tag{font-size:16px;padding:2px 8px;border-radius:5px;border:1.5px solid rgba(255,255,255,.7);color:#fff}
+.prog-hero .h-meta .app-from{color:rgba(255,255,255,.6);font-weight:500}
+.prog-hero .h-meta .app-from::before{content:"·";margin-right:12px}
+.prog-hero .h-desc{font-size:26px;line-height:1.38;color:rgba(255,255,255,.88);max-width:740px;-webkit-line-clamp:2}
+.prog-hero .btns{margin-top:14px}
+.prog-hero .btn{height:66px;padding:0 34px;border-radius:14px;font-size:25px;font-weight:600;background:var(--frost);color:#fff;backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%)}
+.prog-hero .btn.f{background:#f2f2f4;color:#111;transform:scale(1.08);box-shadow:0 18px 44px rgba(0,0,0,.45)}
+.home-hero .dots{left:0;right:0;bottom:96px;justify-content:center;gap:12px}
+.home-hero .dots i{width:9px;height:9px;background:rgba(255,255,255,.4)}
+.home-hero .dots i.on{width:9px;background:#fff;box-shadow:0 0 0 0 #fff}
+.home-hero .dots i.on{width:30px}
+
+/* rows */
+.row{margin-bottom:52px}
+.row h2{font-size:30px;font-weight:700;margin-bottom:20px;color:#fff;text-shadow:0 1px 14px rgba(0,0,0,.4)}
+.row h2 small{font-size:22px;color:rgba(255,255,255,.55)}
+.track{gap:34px}
+
+/* cards: lift, shadow and a soft sheen on focus, no outline ring */
+.card{width:380px}
+.card .im{border-radius:var(--card-r);box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.card .im::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(135deg,rgba(255,255,255,.28),rgba(255,255,255,0) 45%);opacity:0;transition:opacity var(--t2)}
+.card .lab{margin-top:14px;font-size:23px;font-weight:600;color:#fff}
+.card .sub{margin-top:2px;font-size:20px;color:rgba(255,255,255,.55)}
+.card.f{transform:scale(1.09) translateY(-6px)}
+.card.f .im{box-shadow:0 32px 60px rgba(0,0,0,.6)}
+.card.f .im::after{opacity:1}
+.card.f .lab{transform:translateY(10px)}
+.card.f .sub{transform:translateY(10px);transition:transform var(--t2) var(--ease)}
+.card.poster{width:240px}
+.card .bar{left:16px;right:16px;bottom:14px;height:6px}
+.card.has-bar .im img~.shade{background:linear-gradient(0deg,rgba(0,0,0,.55),rgba(0,0,0,0) 35%)}
+
+/* app tiles, same lift */
+.app .tile{border-radius:var(--card-r);box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.fav .app{width:380px}
+.app.f{transform:scale(1.09) translateY(-6px)}
+.app.f .tile{box-shadow:0 32px 60px rgba(0,0,0,.6)}
+.app .lab{color:#fff}
+
+/* quick tiles and dialogs keep the same calm language */
+.qtile{border-radius:var(--card-r)}
+.qtile.f{transform:scale(1.07) translateY(-4px)}
+.preview-flag{top:122px;right:var(--pad);font-size:17px;color:rgba(255,255,255,.5)}
+
+.solid #nav .tabs{background:#2a2624}
+.solid .prog-hero .btn{background:#4a4644}.solid .prog-hero .btn.f{background:#f2f2f4}
+
+/* a tall poster shown in a wide card keeps faces and titles, which sit in the upper part */
+.card .im img.tall{object-position:50% 22%}
+
+
+/* the stage never widens the page, so the fit-to-screen scale is always right */
+#tv{position:fixed}
+
